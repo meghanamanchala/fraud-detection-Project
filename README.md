@@ -1,36 +1,75 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+### *🚀 Fraud Detection Dashboard – Project Overview*  
 
-## Getting Started
+#### *📌 What is This Project?*  
+The *Fraud Detection Dashboard* is a *web application* designed to *monitor and manage fraudulent activities* in real-time.  
+It helps organizations track and analyze fraudulent *apps and URLs, enabling security teams to take **proactive measures*.  
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## *🎯 How It Works?*  
+### *1️⃣ User Authentication*  
+- Users *sign up* as either *Admin* or *Regular User*.  
+- Admins *manage fraud cases, while Regular Users **can only report fraud*.  
+- Users log in with *email & password authentication* (via NextAuth).  
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### *2️⃣ Fraud Monitoring & Reporting*  
+- A *fraud list* displays flagged *apps and URLs* with *risk levels*.  
+- Users can *report new fraud cases*.  
+- Fraud cases are stored in *MongoDB* and updated in real time.  
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### *3️⃣ Data Visualization (30-Day Fraud Trends)*  
+- An *interactive graph* displays fraud trends over the last *30 days*.  
+- Uses *Chart.js* for *real-time analytics*.  
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### *4️⃣ Admin Controls: Investigate, Block, Delete Fraud Cases*  
+- *Admins* can *block, **investigate, and **delete* fraud entries.  
+- Regular users *can only report* fraud but *cannot delete* data.  
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## *🛠 Tech Stack Used*  
+| *Technology* | *Purpose* |
+|--------------|------------|
+| *Next.js* | Full-stack framework for frontend & backend |
+| *React.js* | Frontend UI components |
+| *Tailwind CSS* | Styling & UI responsiveness |
+| *NextAuth.js* | User authentication (email/password) |
+| *MongoDB + Mongoose* | Database for storing fraud reports & users |
+| *Chart.js & react-chartjs-2* | Fraud trend analysis visualization |
+| *Axios* | API calls between frontend and backend |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## *🚀 Project Features*  
+### ✅ *1. User Authentication & Role Management*  
+✔ *Signup/Login* with *email & password* (NextAuth)  
+✔ *Roles:* *Admin* (Manage fraud) & *User* (Report fraud only)  
+✔ *Session Management:* Navbar updates dynamically based on role  
 
-## Deploy on Vercel
+### ✅ *2. Real-Time Fraud Monitoring*  
+✔ *Fraudulent apps & URLs displayed in a table*  
+✔ *Color-coded risk levels (High 🔴, Medium 🟡, Low 🟢)*  
+✔ *Real-time data fetching from MongoDB*  
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### ✅ *3. Actionable Insights*  
+✔ *Report Fraud* – Users can submit fraud cases  
+✔ *Block Fraud* – Admins can *soft delete* fraudulent entries  
+✔ *Investigate Fraud* – Mark fraud cases for review  
+✔ *Delete Fraud* – Admins can permanently remove fraud reports  
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### ✅ *4. 30-Day Fraud Trend Analysis*  
+✔ *Interactive Graph* with *real-time updates*  
+✔ *Data grouped by day* for better analysis  
+✔ *Fraud trends displayed using Chart.js*  
+
+### ✅ *5. Admin Panel*  
+✔ *Only admins can access advanced fraud management features*  
+✔ *Regular users are restricted from deleting/blocking cases*  
+
+---
+
+## *💡 How This Project is Useful?*  
+🔹 *Prevents financial loss & security threats* by identifying fraud early.  
+🔹 *Provides real-time monitoring* of fraud activities.  
+🔹 *Enables security teams* to take *action on fraudulent activities*.  
+🔹 *Improves user trust* by ensuring fraud reports are tracked and reviewed.
