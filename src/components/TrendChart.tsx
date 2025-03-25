@@ -15,7 +15,11 @@ import {
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
-export default function TrendChart({ data }: { data: any[] }) {
+interface TrendChartProps {
+  data: { _id: string; count: number }[];
+}
+
+export default function TrendChart({ data }: TrendChartProps) {
   const chartData = {
     labels: data.map((d) => d._id),
     datasets: [
@@ -62,7 +66,11 @@ export default function TrendChart({ data }: { data: any[] }) {
     <div className="bg-blue-900 border border-blue-700 p-6 rounded-lg shadow-lg h-80 w-full">
       <h2 className="text-2xl font-semibold text-white mb-3 text-center">30-Day Fraud Trend</h2>
       <div className="h-64">
-        <Line data={chartData} options={options} />
+        {data.length > 0 ? (
+          <Line data={chartData} options={options} />
+        ) : (
+          <p className="text-white text-center">No data available</p>
+        )}
       </div>
     </div>
   );

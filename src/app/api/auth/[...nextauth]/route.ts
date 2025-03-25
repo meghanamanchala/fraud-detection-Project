@@ -4,7 +4,7 @@ import bcrypt from "bcryptjs";
 import { connectToDatabase } from "@/lib/db";
 import User from "@/lib/models/User";
 
-export const authOptions = {
+const handler = NextAuth({
   providers: [
     CredentialsProvider({
       name: "Credentials",
@@ -13,12 +13,16 @@ export const authOptions = {
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
+        if (!credentials?.email || !credentials?.password) {
+          throw new Error("Email and password are required");
+        }
+
         await connectToDatabase();
 
-        const user = await User.findOne({ email: credentials?.email });
+        const user = await User.findOne({ email: credentials.email });
         if (!user) throw new Error("User not found");
 
-        const isValidPassword = await bcrypt.compare(credentials!.password, user.password);
+        const isValidPassword = await bcrypt.compare(credentials.password, user.password);
         if (!isValidPassword) throw new Error("Invalid credentials");
 
         return { id: user._id.toString(), name: user.name, email: user.email, role: user.role };
@@ -27,11 +31,15 @@ export const authOptions = {
   ],
   callbacks: {
     async session({ session, token }) {
-      session.user.role = token.role;
+      if (session.user) {
+        session.user.role = (token.role as string) || "user"; // ✅ Explicitly cast token.role as a string
+      }
       return session;
     },
     async jwt({ token, user }) {
-      if (user) token.role = user.role;
+      if (user) {
+        token.role = user.role; // Store role in JWT token
+      }
       return token;
     },
   },
@@ -40,7 +48,6 @@ export const authOptions = {
   },
   session: { strategy: "jwt" },
   secret: process.env.NEXTAUTH_SECRET,
-};
+});
 
-const handler = NextAuth(authOptions);
 export { handler as GET, handler as POST };

@@ -28,7 +28,7 @@ export default function Dashboard() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-950 to-blue-800 flex flex-col items-center py-12 px-4">
-      <motion.div 
+      <motion.div
         className="p-6 rounded-lg shadow-lg text-center w-full max-w-4xl bg-blue-900 border border-blue-700"
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -46,9 +46,15 @@ export default function Dashboard() {
         </motion.div>
       </div>
 
-      <motion.div className="p-6 rounded-lg shadow-lg mt-8 w-full max-w-6xl bg-blue-900 border border-blue-700" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
-        <FraudTable data={fraudData} onDelete={fetchData} />
-      </motion.div>
+      <motion.div
+  className="p-6 rounded-lg shadow-lg mt-8 w-full max-w-6xl bg-blue-900 border border-blue-700"
+  initial={{ opacity: 0, y: 10 }}
+  animate={{ opacity: 1, y: 0 }}
+>
+  <FraudTable data={fraudData} onDelete={fetchData} /> {/* ✅ Removed onUpdate */}
+</motion.div>
+
+
     </div>
   );
 }
