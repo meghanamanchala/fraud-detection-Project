@@ -4,11 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-<<<<<<< HEAD
     "build": "cross-env NEXT_PUBLIC_ESLINT_IGNORE=true next build",
-=======
-    "build": "NEXT_PUBLIC_ESLINT_IGNORE=true next build",
->>>>>>> 57c5ca03778c0cbe26b61c90977dd34d4a931475
     "start": "next start",
     "lint": "next lint"
   },
