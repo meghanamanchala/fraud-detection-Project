@@ -8,6 +8,7 @@ export async function GET() {
     const fraudList = await Fraud.find().sort({ reportedAt: -1 });
     return NextResponse.json(fraudList, { status: 200 });
   } catch (error) {
+    console.error("Error fetching fraud data:", error); // ✅ Logs the error to avoid ESLint error
     return NextResponse.json({ error: "Failed to fetch fraud data" }, { status: 500 });
   }
 }

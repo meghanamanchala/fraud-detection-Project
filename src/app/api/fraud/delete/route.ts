@@ -7,11 +7,14 @@ export async function DELETE(req: Request) {
     await connectToDatabase();
     const { id } = await req.json();
 
-    if (!id) return NextResponse.json({ error: "ID is required" }, { status: 400 });
+    if (!id) {
+      return NextResponse.json({ error: "ID is required" }, { status: 400 });
+    }
 
     await Fraud.findByIdAndDelete(id);
     return NextResponse.json({ message: "Fraud entry deleted" }, { status: 200 });
   } catch (error) {
+    console.error("Error deleting fraud entry:", error); // ✅ Logs the error to avoid ESLint error
     return NextResponse.json({ error: "Failed to delete fraud data" }, { status: 500 });
   }
 }

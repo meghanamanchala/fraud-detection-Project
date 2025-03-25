@@ -21,6 +21,7 @@ export async function POST(req: Request) {
     await newUser.save();
     return NextResponse.json({ message: "User created successfully" }, { status: 201 });
   } catch (error) {
+    console.error("Signup Error:", error); // ✅ Logs the error
     return NextResponse.json({ error: "Error creating user" }, { status: 500 });
   }
 }

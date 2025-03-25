@@ -24,6 +24,7 @@ export async function GET() {
 
     return NextResponse.json(trendData, { status: 200 });
   } catch (error) {
+    console.error("Error fetching trend data:", error); // ✅ Logs the error to avoid ESLint error
     return NextResponse.json({ error: "Failed to fetch trend data" }, { status: 500 });
   }
 }

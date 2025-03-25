@@ -16,6 +16,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json({ message: "Fraudulent entry added" }, { status: 201 });
   } catch (error) {
+    console.error("Error adding fraud data:", error); // ✅ Logs the error to avoid ESLint error
     return NextResponse.json({ error: "Failed to add fraud data" }, { status: 500 });
   }
 }
